@@ -1,5 +1,8 @@
 server:
-	supervisor server.js
+	supervisor -- server.js 9090
+
+competitor:
+	supervisor -- server.js 8080
 
 game:
 	supervisor gameEngine.js

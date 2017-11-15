@@ -4,8 +4,9 @@ const thrift = require('thrift');
 const PlayerServer = require('./gen-nodejs/PlayerServer');
 const ttypes = require('./gen-nodejs/player_types');
 
-// const port = 80; // docker容器端口需为80，9090为本地调试客户端连接端口
-const port = 9090;
+// docker容器端口需为80，9090为本地调试客户端连接端口，8080为本地调试对手客户端端口
+var args = process.argv.splice(2);
+const port = args[0];
 let map = [];
 let gameOptions = {};
 let tankIds = [];
@@ -23,18 +24,18 @@ const server = thrift.createServer(PlayerServer, {
     callback(null);
   },
   assignTanks(tanks, callback) {
-    console.log('tanks', tanks);
+    // console.log('tanks', tanks);
     tankIds = tanks;
     callback(null);
   },
   latestState(state, callback) {
-    console.log('state', state);
+    // console.log('state', state);
     latestState = state;
     callback(null);
   },
   getNewOrders(callback) {
     const orders = [];
-    console.log('orders', orders);
+    // console.log('orders', orders);
     callback(null, orders);
   }
 });

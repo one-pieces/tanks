@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-supervisor server
+supervisor -- server 80
 
 exit 0
