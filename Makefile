@@ -4,7 +4,7 @@ server:
 competitor:
 	supervisor -- server.js 8080
 
-game:
+game-engine:
 	supervisor gameEngine.js
 
 docker-server:
